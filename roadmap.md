@@ -18,16 +18,19 @@
 - `rawBuild`, `getCauses()`, `getUpstreamRun()` 등 sandbox 제한 API를 plugin 내부에서 처리
 
 ### Step 3: `recursiveCreateAndTrigger`
-- 입력:
-  - `gitlabTargetRepoSshUrl` (String) — GitLab repo SSH URL
-  - 순서 있는 규칙 리스트 (List). 각 항목:
-    - `pattern` (String) — repo path에 대한 regex 매칭용
-    - `final_job_name` (String) — 생성할 최종 Job 이름
-    - `template` (String) — 복사할 템플릿 Job 경로
-- 동작:
-  - SSH URL에서 repo path 추출 (예: `git@host:group/repo.git` → `group/repo`)
-  - 규칙 리스트를 순서대로 평가, 첫 번째 매칭 사용
-  - 폴더 계층 재귀 생성 → 템플릿 복사 → Job 트리거
-  - Job이 이미 존재하면 생성 건너뛰고 바로 트리거
-  - 동시 호출 시 중복 생성 방지 (race-safe)
-- `Jenkins.instance`, `Folder.createProject()`, `copy()` 등 sandbox 제한 API를 plugin 내부에서 처리
+- 입력
+  - repo <String> <required>: 입력주는 실제 값
+  - configuration : List<Map>
+    - pattern : regex 로 표현되는 값
+    - target_name : 실제로 만들어질 job 이름. 단, ${REPO}라는 것이 지원되어야 하며, REPO 는 repo 와 일치
+    - template_name : copy  될 job 이름
+  - defaultTemplate <string> <required>:
+  - defaultTargetName <string> : ${REPO}/merge_request 가 기본 값
+
+- 수행:
+  - configuraion 을 iteration 하면서 pattern 이 매칭이 되면, target_name 결정. 만약 $REPO 라는 것이 있으면 resolve.
+  - target_name 이라는 job 이 없으면 생성. 단, target_name 이 folder 구조라면 폴더까지 생성
+  - template_name 을 target_name 으로 복사 후 저장
+  - 만약, configuration 이 매칭되지 않으면 defaultTargetName 을 이용, defaultTemplate 이용
+  - job 이 있으면 생성 과정은 skip
+  - 만들어진 job 을 호출 (wait : false)
