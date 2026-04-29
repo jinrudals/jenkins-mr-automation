@@ -63,21 +63,10 @@ recursiveCreateAndTrigger(
 | `skipPattern` | | 매칭 시 Job 생성/트리거를 건너뛰는 regex |
 | `configuration` | | `templateRule` 목록. pattern 매칭 시 해당 template/target 사용 |
 
-## Build
+## Documentation
 
-```bash
-export JAVA_HOME=/tools/java/openjdk/17.0.2
-export PATH=$JAVA_HOME/bin:$PATH
-
-mvn clean verify
-```
-
-## Install
-
-```bash
-docker cp target/jenkins-mr-automation.hpi jenkins-mr-test:/var/jenkins_home/plugins/jenkins-mr-automation.hpi
-docker restart jenkins-mr-test
-```
+- [install.md](install.md) — 빌드 환경 구성 및 HPI 빌드 방법
+- [deploy.md](deploy.md) — Jenkins에 플러그인 수동 배포 방법 및 필수 플러그인 목록
 
 ## Project Structure
 
