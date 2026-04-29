@@ -6,7 +6,7 @@
 
 **Decision**: Use `Run.getParent()` to get the `Job`, then `Job.getBuilds()` to iterate and filter by `isBuilding()`.
 
-**Rationale**: This is the same pattern used in `examples/mr.Jenkinsfile` (`currentBuild.rawBuild.parent` → `myJob.builds`). The `Job.getBuilds()` method returns a `RunList` in reverse chronological order. Filtering by `b.isBuilding() && b.getNumber() < currentBuildNumber` gives us the candidate set.
+**Rationale**: This is the same pattern used in `examples/olds/MR_Template.Jenkinsfile` (`currentBuild.rawBuild.parent` → `myJob.builds`). The `Job.getBuilds()` method returns a `RunList` in reverse chronological order. Filtering by `b.isBuilding() && b.getNumber() < currentBuildNumber` gives us the candidate set.
 
 **Alternatives considered**:
 - `Jenkins.instance.getQueue()`: Only covers queued (not yet running) builds. Does not help for already-executing builds.

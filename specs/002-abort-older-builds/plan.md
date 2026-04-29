@@ -5,7 +5,7 @@
 
 ## Summary
 
-Add an `abortOlderBuilds` pipeline step to the existing Jenkins MR Automation Plugin. The step scans running builds of the same Job, compares MR IID (primary) or source+target branch (fallback) from each build's upstream parent environment, and aborts older duplicates. All sandbox-restricted API calls (`rawBuild`, `getCauses()`, `getUpstreamRun()`, `doStop()`) are encapsulated inside the plugin, eliminating Script Security approvals. Replaces the `@NonCPS abortOlderBuilds()` function in `examples/mr.Jenkinsfile`.
+Add an `abortOlderBuilds` pipeline step to the existing Jenkins MR Automation Plugin. The step scans running builds of the same Job, compares MR IID (primary) or source+target branch (fallback) from each build's upstream parent environment, and aborts older duplicates. All sandbox-restricted API calls (`rawBuild`, `getCauses()`, `getUpstreamRun()`, `doStop()`) are encapsulated inside the plugin, eliminating Script Security approvals. Replaces the `@NonCPS abortOlderBuilds()` function in `examples/olds/MR_Template.Jenkinsfile`.
 
 ## Technical Context
 

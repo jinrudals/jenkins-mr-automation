@@ -7,7 +7,7 @@
 
 ## Background & Motivation
 
-The current implementation lives in [`examples/mr.Jenkinsfile`](../../examples/mr.Jenkinsfile) as a `@NonCPS def abortOlderBuilds(...)` function. This function calls sandbox-restricted APIs — `currentBuild.rawBuild.parent`, `b.getCauses()`, `cause.getUpstreamRun()`, `b.doStop()` — which **require Script Security approval** on every Jenkins instance where the Jenkinsfile is used. Each API signature must be individually approved by a Jenkins administrator, and approvals must be re-granted whenever the function signature or call pattern changes.
+The current implementation lives in [`examples/olds/MR_Template.Jenkinsfile`](../../examples/olds/MR_Template.Jenkinsfile) as a `@NonCPS def abortOlderBuilds(...)` function. This function calls sandbox-restricted APIs — `currentBuild.rawBuild.parent`, `b.getCauses()`, `cause.getUpstreamRun()`, `b.doStop()` — which **require Script Security approval** on every Jenkins instance where the Jenkinsfile is used. Each API signature must be individually approved by a Jenkins administrator, and approvals must be re-granted whenever the function signature or call pattern changes.
 
 This plugin step replaces that `@NonCPS` function so that all sandbox-restricted API calls are handled inside the plugin, eliminating the need for Script Security approvals entirely.
 
@@ -102,7 +102,7 @@ The step completes silently when no other running builds match the current build
 ### Session 2026-04-29
 
 - Q: 현재 빌드의 MR/브랜치 정보를 어디서 읽는가? → A: 현재 빌드는 `setParentEnv`가 주입한 자신의 환경변수(`env.gitlabMergeRequestIid` 등)를 사용. 후보 빌드만 upstream parent를 직접 조회.
-- Q: 기존 구현 참조 및 Script Security 문제 명시 → A: `examples/mr.Jenkinsfile`의 `@NonCPS abortOlderBuilds` 함수가 원본이며, sandbox-restricted API 호출로 인해 Script Security approval이 필요했음을 Background & Motivation 섹션에 명시.
+- Q: 기존 구현 참조 및 Script Security 문제 명시 → A: `examples/olds/MR_Template.Jenkinsfile`의 `@NonCPS abortOlderBuilds` 함수가 원본이며, sandbox-restricted API 호출로 인해 Script Security approval이 필요했음을 Background & Motivation 섹션에 명시.
 
 ## Assumptions
 
