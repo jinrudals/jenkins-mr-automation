@@ -1,0 +1,10 @@
+{
+  "workflow": "speckit",
+  "specName": "001-jenkins-mr-plugin",
+  "branch": "001-jenkins-mr-plugin",
+  "selectedAt": "2026-04-29T00:44:25.659Z",
+  "currentStep": "specify",
+  "status": "draft",
+  "stepHistory": {},
+  "transitions": []
+}
