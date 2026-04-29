@@ -3,6 +3,7 @@
 Auto-generated from all feature plans. Last updated: 2026-04-29
 
 ## Active Technologies
+- Java 17 + `workflow-step-api` (already in pom.xml) (002-abort-older-builds)
 
 - Java 17 + `workflow-step-api` (Jenkins Pipeline Step API) (001-jenkins-mr-plugin)
 
@@ -22,6 +23,7 @@ tests/
 Java 17: Follow standard conventions
 
 ## Recent Changes
+- 002-abort-older-builds: Added Java 17 + `workflow-step-api` (already in pom.xml)
 
 - 001-jenkins-mr-plugin: Added Java 17 + `workflow-step-api` (Jenkins Pipeline Step API)
 
