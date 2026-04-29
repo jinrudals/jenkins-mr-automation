@@ -33,4 +33,4 @@
 
 - All items passed validation.
 - Scope: `setParentEnv` step + plugin skeleton only.
-- 나머지 step들은 roadmap.md에 명시됨.
+- 나머지 step들은 README.md에 명시됨.

@@ -16,7 +16,7 @@
 
 **Decision**: Iterate `b.getCauses()`, find `Cause.UpstreamCause`, call `getUpstreamRun()`, then `getEnvironment(TaskListener.NULL)` on the parent run.
 
-**Rationale**: Direct port of the `mr.Jenkinsfile` logic. `getUpstreamRun()` returns `null` if the parent build has been deleted — handled as skip-with-warning. `TaskListener.NULL` is used because we don't need to log from the candidate's parent context.
+**Rationale**: Direct port of the `MR_Template.Jenkinsfile` logic. `getUpstreamRun()` returns `null` if the parent build has been deleted — handled as skip-with-warning. `TaskListener.NULL` is used because we don't need to log from the candidate's parent context.
 
 **Alternatives considered**:
 - Reading candidate build's own `EnvActionImpl` (CPS env): Would require `setParentEnv` to have been called in the candidate build. The spec explicitly states we do NOT depend on that.
@@ -36,7 +36,7 @@
 
 **Decision**: MR IID match takes precedence. If both the current build and candidate have `gitlabMergeRequestIid` set and non-empty, compare by IID only. If MR IID is absent/empty in either build, fall back to `gitlabSourceBranch` + `gitlabTargetBranch` exact match.
 
-**Rationale**: Per spec clarification — MR IID is the most precise identifier. Branch combination is a fallback for non-MR triggers. This matches the original `mr.Jenkinsfile` logic: `boolean sameMr = myMrIid && bMrIid == myMrIid; boolean sameBranch = !myMrIid && ...`.
+**Rationale**: Per spec clarification — MR IID is the most precise identifier. Branch combination is a fallback for non-MR triggers. This matches the original `MR_Template.Jenkinsfile` logic: `boolean sameMr = myMrIid && bMrIid == myMrIid; boolean sameBranch = !myMrIid && ...`.
 
 **Alternatives considered**:
 - Always match on both MR IID and branches: Over-restrictive, would miss cases where MR IID alone is sufficient.

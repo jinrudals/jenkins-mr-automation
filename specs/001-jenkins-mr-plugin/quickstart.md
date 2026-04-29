@@ -7,7 +7,7 @@
 
 - JDK 17+
 - Maven 3.9+
-- Jenkins 2.387+ (for testing)
+- Jenkins 2.479.3+ (for testing)
 
 ## Build
 

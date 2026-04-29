@@ -13,7 +13,7 @@ Create a Jenkins plugin that provides a `setParentEnv` pipeline step. This step 
 **Primary Dependencies**: `workflow-step-api` (Jenkins Pipeline Step API)
 **Storage**: N/A
 **Testing**: JUnit 5 + `JenkinsRule` (jenkins-test-harness)
-**Target Platform**: Jenkins 2.387+ LTS
+**Target Platform**: Jenkins 2.479.3+ LTS
 **Project Type**: Jenkins plugin (HPI)
 **Performance Goals**: Step execution < 100ms (reads parent env and injects)
 **Constraints**: Must not require Script Security approvals; must work in both Scripted and Declarative pipelines

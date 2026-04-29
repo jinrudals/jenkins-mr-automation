@@ -111,6 +111,6 @@ T008: examples/test-child.Jenkinsfile
 
 - [P] tasks = different files, no dependencies
 - [US1] = User Story 1: Parent Environment Inheritance
-- Only one user story in scope — remaining steps (`abortOlderBuilds`, `recursiveCreateAndTrigger`) are in roadmap.md
+- Only one user story in scope — remaining steps (`abortOlderBuilds`, `recursiveCreateAndTrigger`) are in README.md
 - Commit after each task or logical group
-- Plugin must work on Jenkins 2.387+ LTS
+- Plugin must work on Jenkins 2.479.3+ LTS

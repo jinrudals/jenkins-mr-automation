@@ -109,5 +109,5 @@ The step completes silently when no other running builds match the current build
 - The `setParentEnv` step (from 001-jenkins-mr-plugin) MUST have been called before `abortOlderBuilds` in the current build's pipeline. The current build reads its own `env.gitlabMergeRequestIid`, `env.gitlabSourceBranch`, `env.gitlabTargetBranch` (already injected by `setParentEnv`). Candidate builds' metadata is read by directly querying their upstream parent environment — those builds do not need to have called `setParentEnv`.
 - MR IID matching takes precedence over branch matching. If MR IID is present in both builds, branch values are not compared.
 - The step only considers builds of the same Job (not across different Jobs).
-- Jenkins 2.387+ (LTS) is the minimum supported version, consistent with the plugin's baseline.
+- Jenkins 2.479.3+ (LTS) is the minimum supported version, consistent with the plugin's baseline.
 - The step does not wait for aborted builds to finish terminating — it issues the abort and continues.

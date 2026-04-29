@@ -3,7 +3,7 @@
 **Feature Branch**: `003-recursive-create-trigger`  
 **Created**: 2026-04-29  
 **Status**: Draft  
-**Input**: User description: "recursiveCreateAndTrigger pipeline step from roadmap.md Step 3"
+**Input**: User description: "recursiveCreateAndTrigger pipeline step from README.md"
 
 ## Background & Motivation
 
@@ -158,7 +158,7 @@ The step supports a `skipPattern` parameter. When the repo path matches this reg
 - The step receives `repoPath` as a pre-parsed parameter. The calling pipeline is responsible for extracting the repo path from the SSH URL (e.g., stripping host prefix and `.git` suffix).
 - `finalJobNamePattern` and `defaultTargetName` support `${REPO}` variable substitution, where `${REPO}` is replaced with the provided `repoPath` (e.g., `${REPO}/merge_request` with `repoPath=group/repo` → `group/repo/merge_request`).
 - Template jobs are pre-configured in Jenkins by administrators. The step does not create or manage templates.
-- Jenkins 2.387+ (LTS) is the minimum supported version, consistent with the plugin's baseline.
+- Jenkins 2.479.3+ (LTS) is the minimum supported version, consistent with the plugin's baseline.
 - The CloudBees Folders plugin is installed (required for `Folder` type and `createProject()`).
 - The step triggers the job with `wait: false` — it does not wait for the triggered build to complete.
 - Folder and job names derived from the repo path are used as-is without sanitization, consistent with the existing Jenkinsfile behavior.

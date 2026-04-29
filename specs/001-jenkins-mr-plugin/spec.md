@@ -7,7 +7,7 @@
 
 ## Scope
 
-This spec covers **only** the `setParentEnv` pipeline step and the plugin project skeleton. The remaining steps are documented in [roadmap.md](../../roadmap.md).
+This spec covers **only** the `setParentEnv` pipeline step and the plugin project skeleton. The remaining steps are documented in [README.md](../../README.md).
 
 ## User Scenarios & Testing
 
@@ -15,7 +15,7 @@ This spec covers **only** the `setParentEnv` pipeline step and the plugin projec
 
 A pipeline author uses the `setParentEnv` step in a Jenkinsfile. The step reads the parent (upstream) build's environment variables and injects them into the current build's environment. This makes GitLab MR metadata (source branch, target branch, MR IID, repo SSH URL, etc.) available without `@NonCPS` functions or sandbox-restricted API calls.
 
-**Why this priority**: Without parent environment inheritance, child MR jobs cannot access GitLab metadata. This replaces the `setParentEnv()` `@NonCPS` function in `mr.Jenkinsfile`.
+**Why this priority**: Without parent environment inheritance, child MR jobs cannot access GitLab metadata. This replaces the `setParentEnv()` `@NonCPS` function in `MR_Template.Jenkinsfile`.
 
 **Independent Test**: Create a parent job that sets GitLab environment variables and triggers a child job. In the child job, call `setParentEnv` and verify all parent environment variables are accessible.
 
@@ -55,12 +55,12 @@ A pipeline author uses the `setParentEnv` step in a Jenkinsfile. The step reads 
 ### Measurable Outcomes
 
 - **SC-001**: Zero Script Security approvals required — `setParentEnv` operates without sandbox approvals.
-- **SC-002**: A Jenkinsfile using `setParentEnv` can fully replace the `@NonCPS def setParentEnv()` function from `mr.Jenkinsfile`.
+- **SC-002**: A Jenkinsfile using `setParentEnv` can fully replace the `@NonCPS def setParentEnv()` function from `MR_Template.Jenkinsfile`.
 - **SC-003**: Parent environment variables are available immediately after `setParentEnv` completes.
-- **SC-004**: The plugin builds successfully as an HPI and installs on Jenkins 2.387+.
+- **SC-004**: The plugin builds successfully as an HPI and installs on Jenkins 2.479.3+.
 
 ## Assumptions
 
-- Jenkins 2.387+ (LTS) is the minimum supported version.
+- Jenkins 2.479.3+ (LTS) is the minimum supported version.
 - The plugin provides pipeline steps — the Jenkinsfile author is responsible for calling them.
 - SSH credentials, GitLab commit status updates, pre-merge checkout, and workflow file parsing are outside this plugin's scope.

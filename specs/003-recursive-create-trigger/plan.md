@@ -60,8 +60,7 @@ src/
     │       ├── SetParentEnvStep.java                    # (existing)
     │       ├── InjectEnvVarsAction.java                 # (existing)
     │       ├── AbortOlderBuildsStep.java                # (existing)
-    │       ├── RecursiveCreateAndTriggerStep.java        # NEW — Step + @DataBoundConstructor/Setter + Descriptor
-    │       └── RecursiveCreateAndTriggerStep.java        # NEW — inner Execution class + TemplateRule POJO
+    │       └── RecursiveCreateAndTriggerStep.java        # NEW — Step + Execution + TemplateRule + Descriptor
     └── resources/
         └── io/jenkins/plugins/mrautomation/
             └── RecursiveCreateAndTriggerStep/
