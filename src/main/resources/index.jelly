@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+    Pipeline steps for MR automation — setParentEnv injects parent build environment variables
+</div>
